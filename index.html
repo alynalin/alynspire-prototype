@@ -290,7 +290,7 @@
     transform:translateY(-6px) scale(1.01);
     box-shadow:0 0 35px rgba(0, 200, 255, 0.35);
     }
-    .avatar{width:56px;height:56px;border-radius:14px;object-fit:cover;box-shadow:0 0 12px rgba(0,200,255,.25);}
+    .avatar{width:56px;height:56px;border-radius:14px;object-fit:cover;box-shadow:0 0 12px rgba(0,200,255,.25); flex-shrink: 0;}
     .tag{font-size:13px;color:#b9dff6;padding:6px 8px;border-radius:10px;background:rgba(0,212,255,0.04);display:inline-block}
 
     /* sections */
@@ -748,6 +748,98 @@ aside .btn.primary{
   box-shadow: 0 0 15px rgba(0, 212, 255, 0.3) !important;
   background: rgba(0, 212, 255, 0.05) !important;
 }
+
+/* Tambahkan ini di luar media query (CSS utama) */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* Update Media Query kamu */
+@media (max-width: 980px) {
+  header.navbar {
+    padding: 10px 20px;
+  }
+
+  .menu-toggle {
+    display: block; /* Munculkan tombol di HP */
+  }
+
+  nav#mainNav {
+    display: none; /* Sembunyikan default */
+    flex-direction: column;
+    position: absolute;
+    top: 100%; /* Muncul tepat di bawah navbar */
+    left: 0;
+    width: 100%;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(15px);
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 10px;
+  }
+
+  /* Munculkan nav saat class 'active' ditambah lewat JS */
+  nav#mainNav.active {
+    display: flex;
+  }
+
+  nav#mainNav a {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  /* Layout Konten di HP agar tidak ke samping */
+  .hero, .grid-2, .auth-hero {
+    grid-template-columns: 1fr !important;
+    padding: 20px !important;
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .desktop-auth {
+    display: none; /* Sembunyikan tombol daftar di navbar saat di HP agar tidak penuh */
+  }
+}
+/* Sembunyikan tombol mobile secara default (saat di layar besar) */
+.mobile-only-auth {
+  display: none;
+}
+
+/* Tampilan untuk layar besar (Desktop) */
+@media (min-width: 981px) {
+  .desktop-only-auth {
+    display: flex;
+    gap: 10px;
+  }
+}
+
+/* Tampilan untuk layar HP (980px ke bawah) */
+@media (max-width: 980px) {
+  /* Sembunyikan tombol desktop */
+  .desktop-only-auth {
+    display: none !important;
+  }
+  
+  /* Tampilkan tombol di dalam menu nav */
+  .mobile-only-auth {
+    display: block;
+  }
+
+  /* Pastikan tombol hamburger ada di pojok kanan */
+  .menu-toggle {
+    display: block;
+    order: 2; /* Agar berada di kanan */
+  }
+}
   </style>
 </head>
 <body>
@@ -761,18 +853,24 @@ aside .btn.primary{
     </div>
   </a>
 
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
   <nav id="mainNav">
-    <a class="router" data-href="/" onclick="navigate('/')">Beranda</a>
-    <a class="router" data-href="/tutors" onclick="navigate('/tutors')">Tutor</a>
-    <a class="router" data-href="/blog" onclick="navigate('/blog')">Blog</a>
-    <a class="router" data-href="/about" onclick="navigate('/about')">Tentang</a>
-    <a class="router" data-href="/dashboard" onclick="navigate('/dashboard')">Dashboard</a>
+    <a class="router" onclick="navigate('/'); toggleMenu()">Beranda</a>
+    <a class="router" onclick="navigate('/tutors'); toggleMenu()">Tutor</a>
+    <a class="router" onclick="navigate('/blog'); toggleMenu()">Blog</a>
+    <a class="router" onclick="navigate('/about'); toggleMenu()">Tentang</a>
+    <a class="router" onclick="navigate('/dashboard'); toggleMenu()">Dashboard</a>
+    
+    <div class="mobile-only-auth" style="margin-top: 20px;">
+      <button class="btn-glow" style="width:100%; margin-bottom:10px;" onclick="navigate('/login'); toggleMenu()">Masuk</button>
+      <button class="btn-glow" style="width:100%;" onclick="navigate('/register'); toggleMenu()">Daftar</button>
+    </div>
   </nav>
 
-  <div style="display:flex;gap:10px;align-items:center">
+  <div class="desktop-only-auth">
     <button class="btn-glow router" onclick="navigate('/login')">Masuk</button>
     <button class="btn-glow router" onclick="navigate('/register')">Daftar Sekarang</button>
-    <div class="mobile-nav hidden"></div>
   </div>
 </header>
 
@@ -1238,6 +1336,21 @@ aside .btn.primary{
 <div id="toast" class="toast hidden"></div>
 
 <script>
+  function toggleMenu() {
+  const nav = document.getElementById('mainNav');
+  const isMobile = window.innerWidth <= 980;
+  
+  if (isMobile) {
+    nav.classList.toggle('active');
+    
+    // Tambahan: Kunci scroll body saat menu terbuka
+    if (nav.classList.contains('active')) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }
+}
   // ---------- Mock data ----------
   const tutors = [
   {
