@@ -1,0 +1,1871 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Alynspire — Inspire Your Learning Journey</title>
+  <meta name="description" content="Alynspire - Platform les privat online. Temukan tutor terbaik, atur jadwal, dan belajar dengan nyaman." />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724;
+      --glass: rgba(255,255,255,0.06);
+      --muted: rgba(255,255,255,0.7);
+      --accent-1: #00D4FF; /* turquoise */
+      --accent-2: #7C3AED; /* purple */
+      --accent-grad: linear-gradient(135deg,var(--accent-1),var(--accent-2));
+      --card-bg: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      --radius: 14px;
+      color-scheme: dark;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(circle at top left, #0e1b2f, #0a1224 40%, #050a14 100%);
+      color: #fff;
+      -webkit-font-smoothing:antialiased;
+      line-height:1.45;
+      overflow-y:auto;
+    }
+
+    /* Header / Nav */
+    header.navbar{
+      position:sticky;
+      top:0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 28px;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 6px 18px rgba(2, 6, 23, 0.6);
+      z-index: 1000;
+    }
+    .brand{
+      display:flex;gap:12px;align-items:center;text-decoration:none;color:inherit;
+    }
+    .logo{
+      width:44px;height:44px;border-radius:12px;
+      background:var(--accent-grad);
+      display:grid;place-items:center;font-weight:800;color:#021122;
+      box-shadow: 0 6px 20px rgba(124,58,237,0.16), inset 0 -6px 18px rgba(255,255,255,0.06);
+    }
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{
+      color:var(--muted);
+      text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600;font-size:14px;
+    }
+    nav a:hover{color:white;background:rgba(255,255,255,0.04)}
+    .cta{
+      padding:9px 14px;border-radius:12px;background:var(--accent-grad);color:#021122;font-weight:700;
+      box-shadow: 0 8px 30px rgba(0,212,255,0.06);
+      text-decoration:none;
+    }
+    .btn-glow{
+      background: linear-gradient(90deg, #5ac5ff, #8d6bff);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      box-shadow: 0 0 20px rgba(90, 197, 255, .5),
+                  0 0 35px rgba(141, 107, 255, .4);
+      transition: 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-glow:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(90, 197, 255, .7),
+                  0 0 40px rgba(141, 107, 255, .6);
+    }
+    .hero-title{
+      font-size: 46px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #fff, #e6f9ff 69%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-title span.highlight{
+      background: linear-gradient(90deg,#00e5ff,#7c3aed);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: pulseText 3.5s ease-in-out infinite;
+    }
+    @keyframes pulseText{
+      0%,100%{filter: brightness(1)}
+      50%{filter: brightness(1.35)}
+    }
+    .hero-subtitle{
+      font-size: 20px;
+      opacity: 0.8;
+      max-width: 650px;
+    }
+    .login-box{
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0 0 25px rgba(80, 200, 255, .15);
+      position: relative;
+      animation: floatCard 6s ease-in-out infinite;
+      margin-top: 120px;
+      z-index: 5;
+    }
+    @keyframes floatCard{
+      0%,100%{transform:translateY(0)}
+      50%{transform: translateY(-10px)}
+    }
+    .login-box div{
+      color: #e0f2ff;
+    }
+    .login-box .small{
+      color: #c0e6ff;
+    }
+    .glow{
+      box-shadow: 0 0 20px rgba(0, 200, 255, .2);
+    }
+.auth-hero{
+  max-width:1100px;
+  margin:40px auto;
+  padding:40px;
+  border-radius:20px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:36px;
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.05);
+}
+
+.auth-hero::before{
+  content:"";
+  position:absolute;
+  inset:-40px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0,212,255,.18), transparent 40%),
+    radial-gradient(circle at 80% 10%, rgba(124,58,237,.18), transparent 40%);
+  filter:blur(40px);
+}
+
+.auth-hero > *{
+  position:relative;
+  z-index:1;
+}
+
+.auth-left h1{
+  font-size:36px;
+  line-height:1.1;
+  margin:0;
+}
+
+.auth-left h1 span{
+  background:linear-gradient(90deg,#00e5ff,#7c3aed);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.auth-left p{
+  margin-top:14px;
+  max-width:420px;
+  color:#b8cfe0;
+}
+
+.auth-points{
+  margin-top:24px;
+  display:grid;
+  gap:10px;
+}
+.auth-points div{
+  padding:12px 14px;
+  border-radius:14px;
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(10px);
+  font-weight:600;
+}
+    /* Hero */
+    .hero{
+      max-width:1200px;margin:36px auto;padding:36px;border-radius:18px;background:
+      linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:start;
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.04);
+
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before{
+      content:"";
+      position: absolute;
+      inset: -40px;
+      background: radial-gradient(circle at 20% 20%, rgba(0,212,255,.18), transparent40%), radial-gradient(circle at 80% 10%, rgba(124,58,237,.18), transparent 40%);
+      z-index: 0;
+      filter:blur(40px);
+      pointer-events: none;
+    }
+    .hero > *{
+      position: relative;
+      z-index: 1;
+    }
+    .hero .left h1{
+      margin:0;font-size:34px;line-height:1.02;
+      background:linear-gradient(90deg,#fff,#e6f9ff 60%);-webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .tagline{
+      color: #bfefff;margin-top:12px;font-weight:600;
+    }
+    .hero p{color: #b8cfe0;margin-top:18px}
+    .actions{display:flex;gap:12px;margin-top:22px}
+    .btn{
+      padding:12px 18px;border-radius:12px;border:0;font-weight:700;cursor:pointer;
+    }
+    .primary{background:var(--accent-grad);color:#021122}
+    .secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    :root{
+      --muted: rgba(255, 255, 255 , 0.8);
+    }
+
+    /* tutor cards */
+    .tutors-grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top:18px
+    }
+    @media (min-width: 600px){
+      .tutors-grid{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (min-width: 980px){
+      .tutors-grid{
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+    .tutor-card{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(12px);
+  transition: 0.3s;
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.1);
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+    .tutor-card::after{
+  content:"Lihat Profil →";
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.45);
+  opacity:0;
+  transition:.3s;
+  font-weight:700;
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.tutor-card:hover::after{
+  opacity:1;
+}
+    .tutor-card:hover{
+    transform:translateY(-6px) scale(1.01);
+    box-shadow:0 0 35px rgba(0, 200, 255, 0.35);
+    }
+    .avatar{width:56px;height:56px;border-radius:14px;object-fit:cover;box-shadow:0 0 12px rgba(0,200,255,.25);}
+    .tag{font-size:13px;color:#b9dff6;padding:6px 8px;border-radius:10px;background:rgba(0,212,255,0.04);display:inline-block}
+
+    /* sections */
+    section{max-width:1200px;margin:24px auto;padding:0 20px}
+    h2.section-title{font-size:20px;margin:8px 0 12px 0;color: #eaf7ff}
+    .grid-2{display:grid;grid-template-columns:1fr 420px;gap:24px}
+
+    /* forms */
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.03)}
+    label{display:block;font-weight:600;margin-top:10px;color:var(--muted);font-size:13px}
+    input[type=text],input[type=email],input[type=password],select,textarea{
+      width:100%;padding:11px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;margin-top:6px;
+    }
+    .small{font-size:13px;color:#9fb6d0}
+    .muted{color:var(--muted)}
+    .help{font-size:12px;color:#9fb6d0;margin-top:8px}
+
+    /* schedule & booking */
+    .schedule-list{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+    .slot{display:flex;justify-content:space-between;padding:10px;border-radius:10px;border:1px dashed rgba(255,255,255,0.03)}
+    .slot .time{font-weight:700}
+    .slot button{border-radius:10px;padding:8px 12px;border:0;background:var(--accent-1);color:#021122;font-weight:700;cursor:pointer}
+
+    /* dashboard */
+    .dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .stat{padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
+
+    /* footer */
+    footer{margin-top:40px;padding:28px;border-top:1px solid rgba(255,255,255,0.03);text-align:center;color: #97b7d0}
+
+    /* responsive */
+    @media (max-width:980px){
+      .hero,.grid-2{grid-template-columns:1fr}
+      nav{display:none}
+      header{padding:12px}
+      .mobile-nav{display:flex;gap:10px}
+    }
+
+    /* small helpers */
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.1);font-weight:700; box-shadow: 0 0 10px rgba(0, 200, 255, 0.08);}
+    a.router{cursor:pointer}
+    /* subtle entrance animations */
+    .fade-in{opacity:0;transform:translateY(8px);animation:fadeIn .6s forwards}
+    @keyframes fadeIn{to{opacity:1;transform:none}}
+    .hidden{display:none!important}
+
+    /* messages */
+    .toast{position:fixed;right:20px;bottom:20px;background:linear-gradient(90deg,#084c6b,#07203b);padding:12px 16px;border-radius:10px;color:#cfefff;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+    /* ======================
+   BLOG SECTION ✨
+====================== */
+
+.blog-section{
+  max-width:1200px;
+  margin:40px auto;
+  padding:0 20px;
+}
+
+.blog-hero{
+  text-align:center;
+  margin-bottom:36px;
+}
+
+.blog-hero h1{
+  font-size:38px;
+  background:linear-gradient(90deg,#fff,#ccefff);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.blog-hero p{
+  max-width:640px;
+  margin:12px auto 0;
+  color:#b8cfe0;
+}
+
+/* grid */
+.blog-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:28px;
+}
+
+@media(min-width:700px){
+  .blog-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(min-width:1000px){
+  .blog-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+/* card */
+.blog-card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:22px;
+  overflow:hidden;
+  backdrop-filter:blur(14px);
+  box-shadow:0 0 30px rgba(0,200,255,0.08);
+  transition:.35s ease;
+}
+
+.blog-card:hover{
+  transform:translateY(-8px) scale(1.01);
+  box-shadow:0 0 45px rgba(0,200,255,0.25);
+}
+
+/* thumbnail */
+.blog-thumb{
+  height:160px;
+}
+
+.gradient-1{
+  background:linear-gradient(135deg,#00d4ff,#7c3aed);
+}
+.gradient-2{
+  background:linear-gradient(135deg,#7c3aed,#ec4899);
+}
+.gradient-3{
+  background:linear-gradient(135deg,#00e5ff,#22c55e);
+}
+
+/* content */
+.blog-content{
+  padding:20px;
+}
+
+.blog-meta{
+  font-size:12px;
+  color:#9fb6d0;
+}
+
+.blog-content h3{
+  margin:10px 0 8px;
+  font-size:18px;
+}
+
+.blog-content p{
+  font-size:14px;
+  color:#b8cfe0;
+  line-height:1.6;
+  margin-bottom:14px;
+}
+.featured-blog{
+  margin-bottom:40px;
+  padding:36px;
+  border-radius:26px;
+  background:
+    linear-gradient(135deg, rgba(0,212,255,.25), rgba(124,58,237,.25));
+  position:relative;
+  overflow:hidden;
+}
+
+.featured-blog::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 30% 20%, rgba(255,255,255,.25), transparent 60%);
+}
+
+.featured-content{
+  position:relative;
+  z-index:1;
+  max-width:520px;
+}
+
+.featured-content h2{
+  font-size:34px;
+  margin:12px 0;
+}
+
+.featured-content p{
+  color:#e6f9ff;
+  margin-bottom:18px;
+}
+
+.badge{
+  display:inline-block;
+  padding:6px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.2);
+  font-weight:600;
+}
+.blog-card{
+  animation: floatUp .6s ease both;
+}
+
+@keyframes floatUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:none}
+}
+/* =====================
+   ABOUT SECTION 💙
+===================== */
+
+.about-section{
+  max-width:1200px;
+  margin:40px auto;
+  padding:0 20px;
+}
+
+/* hero */
+.about-hero{
+  text-align:center;
+  margin-bottom:48px;
+}
+
+.about-hero h1{
+  font-size:42px;
+}
+
+.about-hero h1 span{
+  background:linear-gradient(90deg,#00e5ff,#7c3aed);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.about-hero p{
+  max-width:680px;
+  margin:14px auto 0;
+  color:#b8cfe0;
+}
+
+/* grid */
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:36px;
+  align-items:center;
+}
+
+@media(min-width:900px){
+  .about-grid{
+    grid-template-columns:1.1fr 1fr;
+  }
+}
+
+/* story */
+.about-story h2{
+  font-size:28px;
+  margin-bottom:12px;
+}
+
+.about-story p{
+  color:#b8cfe0;
+  line-height:1.7;
+  margin-bottom:12px;
+}
+
+/* values */
+.about-values{
+  display:grid;
+  gap:18px;
+}
+
+.value-card{
+  padding:22px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(14px);
+  box-shadow:0 0 25px rgba(0,200,255,.12);
+  transition:.35s ease;
+}
+
+.value-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 35px rgba(0,200,255,.25);
+}
+
+.value-card h3{
+  margin:10px 0 6px;
+}
+
+/* stats */
+.about-stats{
+  margin-top:60px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  text-align:center;
+}
+
+.about-stats div{
+  padding:22px;
+  border-radius:20px;
+  background:linear-gradient(135deg, rgba(0,212,255,.2), rgba(124,58,237,.2));
+}
+
+.about-stats h3{
+  font-size:30px;
+  margin-bottom:4px;
+}
+
+.about-stats span{
+  font-size:14px;
+  color:#e6f9ff;
+}
+
+/* mobile */
+@media(max-width:600px){
+  .about-hero h1{
+    font-size:32px;
+  }
+
+  .about-stats{
+    grid-template-columns:1fr;
+  }
+}
+.about-team{
+  margin-top:80px;
+  text-align:center;
+}
+
+.about-team h2{
+  font-size:32px;
+  margin-bottom:32px;
+}
+
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:24px;
+}
+
+.team-card{
+  padding:24px;
+  border-radius:22px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(16px);
+  transition:.35s ease;
+}
+
+.team-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 40px rgba(0,212,255,.25);
+}
+
+.team-card h4{
+  margin:14px 0 4px;
+}
+
+.team-card span{
+  font-size:14px;
+  color:#b8cfe0;
+}
+
+.avatar{
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  font-size:22px;
+  margin:0 auto;
+  background:linear-gradient(135deg,#00e5ff,#7c3aed);
+  color:#fff;
+}
+.dashboard-hero{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:28px;
+  border-radius:24px;
+  margin-bottom:32px;
+  background:
+    linear-gradient(135deg, rgba(0,212,255,.35), rgba(124,58,237,.35));
+  box-shadow:0 0 50px rgba(0,212,255,.35);
+}
+
+.dashboard-hero h2{
+  margin:0;
+  font-size:28px;
+}
+
+.dashboard-hero p{
+  margin-top:6px;
+  opacity:.85;
+}
+.card{
+  position:relative;
+  overflow:hidden;
+  backdrop-filter:blur(18px);
+}
+
+.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(120deg, transparent, rgba(255,255,255,.08), transparent);
+  opacity:0;
+  transition:.5s;
+}
+
+.card:hover::after{
+  opacity:1;
+}
+.dash-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.stat{
+  padding:16px;
+  border-radius:16px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  transition:.3s;
+}
+
+.stat:hover{
+  transform:translateY(-4px);
+  box-shadow:0 0 25px rgba(0,212,255,.25);
+}
+#activityList{
+  padding:10px;
+  border-radius:12px;
+  background:rgba(255,255,255,.04);
+}
+aside .btn{
+  padding:14px;
+  border-radius:14px;
+  font-weight:600;
+}
+
+aside .btn.primary{
+  background:linear-gradient(135deg,#00d4ff,#7c3aed);
+  box-shadow:0 0 25px rgba(0,212,255,.45);
+}
+#miniChat{
+  background:rgba(255,255,255,.04);
+  padding:14px;
+  border-radius:18px;
+}
+
+#chatLog{
+  margin-top:10px;
+  padding:8px;
+  border-radius:12px;
+  background:rgba(0,0,0,.2);
+}
+.ai-glow {
+  border: 1px solid var(--accent-1) !important;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3) !important;
+  background: rgba(0, 212, 255, 0.05) !important;
+}
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <a class="brand" onclick="navigate('/')">
+    <div class="logo">A</div>
+    <div>
+      <div style="font-weight:800">Alynspire</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:2px">Inspire Your Learning Journey</div>
+    </div>
+  </a>
+
+  <nav id="mainNav">
+    <a class="router" data-href="/" onclick="navigate('/')">Beranda</a>
+    <a class="router" data-href="/tutors" onclick="navigate('/tutors')">Tutor</a>
+    <a class="router" data-href="/blog" onclick="navigate('/blog')">Blog</a>
+    <a class="router" data-href="/about" onclick="navigate('/about')">Tentang</a>
+    <a class="router" data-href="/dashboard" onclick="navigate('/dashboard')">Dashboard</a>
+  </nav>
+
+  <div style="display:flex;gap:10px;align-items:center">
+    <button class="btn-glow router" onclick="navigate('/login')">Masuk</button>
+    <button class="btn-glow router" onclick="navigate('/register')">Daftar Sekarang</button>
+    <div class="mobile-nav hidden"></div>
+  </div>
+</header>
+
+<!-- HERO -->
+<main id="appRoot" style="padding-bottom:60px">
+  <section class="hero fade-in" id="section-home">
+    <div class="left">
+      <h1 class="hero-title">Inspire Your <span class="highlight">Learning Journey</span><br> with Alynspire</h1>
+      <div class="tagline hero-subtitle">Platform les privat online — temukan tutor terbaik & atur jadwal dengan mudah.</div>
+      <p>Kami memudahkan siswa bertemu tutor profesional untuk semua jenjang dan mata pelajaran. Belajar fleksibel: Zoom, Meet, atau kelas built-in Alynspire.</p>
+      <div class="actions">
+        <button class="btn-glow" onclick="navigate('/register')">Mulai Belajar</button>
+        <button class="btn-glow" onclick="navigate('/tutors')">Lihat Tutor</button>
+      </div>
+
+      <div style="margin-top:22px">
+        <div style="display:flex;gap:12px;align-items:center">
+          <div class="pill">10+ Tutor</div>
+          <div class="pill">500+ Sesi / bulan</div>
+          <div class="pill">Rating rata-rata 4.8 ★</div>
+        </div>
+      </div>
+
+      <div style="margin-top:20px">
+        <h2 class="section-title">Tutor Pilihan</h2>
+        <div class="tutors-grid" id="tutorsPreview">
+          <!-- cards injected by JS -->
+        </div>
+      </div>
+
+    </div>
+
+    <aside>
+      <div class="login-box glow">
+        <div style="display:flex;flex-direction:column;align-items: center;gap:12px;text-align: center;">
+          <div style="width:80px;height:80px;border-radius:16px;background:var(--accent-grad);display:grid;place-items:center;color:#021122;font-weight:800;font-size: 36px;">A</div>
+          <div>
+            <div style="font-weight:800">Gabung Sekarang — Gratis</div>
+            <div class="small">Daftar sebagai siswa atau tutor, verifikasi email/OTP, dan mulai mengajar/ belajar.</div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px">
+          <label>Masuk cepat</label>
+          <input type="email" id="quickEmail" placeholder="Email atau nomor HP" />
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button class="btn primary" onclick="quickJoin()">Kirim OTP</button>
+            <button class="btn secondary" onclick="navigate('/login')">Masuk manual</button>
+          </div>
+        </div>
+
+        <div class="help">Integrasi: Google Sign-In, Email / OTP (via provider)</div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- Tutors page -->
+  <section id="section-tutors" class="fade-in hidden">
+    <h2 class="section-title">Daftar Tutor & Mata Pelajaran</h2>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;position: relative;z-index: 999;">
+        <div style="display:flex;gap:8px;align-items:center">
+          <select id="filterSubject" onchange="renderTutors()" style="background: #222; color: #FFF; padding: 8px;">
+            <option value="">Semua Mata Pelajaran</option>
+            <option>Matematika</option>
+            <option>Fisika</option>
+            <option>Bahasa Inggris</option>
+            <option>Biologi</option>
+            <option>Kimia</option>
+          </select>
+          <input type="text" id="filterName" placeholder="Cari nama tutor..." oninput="renderTutors()" />
+          <button class="btn primary glow" onclick="showAiRecommendations()" style="white-space:nowrap">
+    ✨ Rekomendasi AI
+  </button>
+        </div>
+        <div class="small muted">Urutkan: <a class="router" onclick="sortTutors('rating')">Rating</a> • <a class="router" onclick="sortTutors('experience')">Experience</a></div>
+      </div>
+
+      <div class="tutors-grid" id="tutorsList" style="margin-top:16px"></div>
+    </div>
+  </section>
+
+  <!-- Booking -->
+  <section id="section-booking" class="hidden fade-in">
+    <h2 class="section-title">Booking & Jadwal</h2>
+    <div class="grid-2">
+      <div>
+        <div class="card">
+          <h3 style="margin:0">Pilih Tutor</h3>
+          <div id="selectedTutorCard" style="margin-top:10px">Pilih tutor terlebih dahulu dari halaman <b>Tutor</b>.</div>
+          <div style="margin-top:12px">
+            <label>Pilih tanggal</label>
+            <input type="date" id="bookingDate" />
+            <div class="help">Lihat slot tersedia tutor pada tanggal yang dipilih.</div>
+          </div>
+
+          <div style="margin-top:12px">
+            <h4 class="small">Slot Tersedia</h4>
+            <div id="slots" class="schedule-list"><div class="small">Tidak ada slot terpilih.</div></div>
+          </div>
+
+          <div style="margin-top:12px">
+            <label>Metode Pembayaran</label>
+            <select id="payMethod" onchange="updatePaymentDetails()" style="position: relative; z-index: 9999; background: #222; color: #FFF; padding: 10px;">
+              <option value="ewallet">E-wallet (Gopay, OVO, Dana)</option>
+              <option value="transfer">Transfer Bank (Midtrans/Xendit)</option>
+              <option value="invoice">Invoice / Transfer Manual</option>
+            </select>
+            <div style="display:flex;gap:8px;margin-top:12px">
+              <button class="btn primary" style="position: relative; z-index: 9999;" onclick="checkout()">Bayar & Konfirmasi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h4>Ringkasan</h4>
+          <div style="margin-top:8px" id="summaryBox">Pilih tutor & slot untuk melihat ringkasan.</div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h4>Catatan</h4>
+          <ul style="padding-left:18px;color:var(--muted)">
+            <li>Notifikasi dikirim via email & push (if enabled)</li>
+            <li>Link kelas dikirim 10 menit sebelum mulai</li>
+            <li>Refund mengikuti kebijakan Alynspire</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Register / Login -->
+  <section id="section-register" class="hidden fade-in">
+    <div class="auth-hero">
+      <div class="auth-left">
+        <h1>
+          Mulai Belajar<br>Bersama <span>Alynspire</span>
+        </h1>
+        <p>
+          Daftar gratis dan temukan tutor terbaik sesuai kebutuhan belajarmu.
+        </p>
+        <div class="auth-points">
+        <div>🎓 Tutor Terverifikasi</div>
+        <div>⏰ Jadwal Fleksibel</div>
+        <div>🔒 Aman & Terpercaya</div>
+      </div>
+    </div>
+
+    <!-- KANAN -->
+    <div>
+      <div class="card">
+        <!-- FORM REGISTER KAMU YANG LAMA TETAP DI SINI -->
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <div style="flex:1;min-width:260px">
+          <label>Daftar sebagai</label>
+          <select id="role">
+            <option value="student">Siswa</option>
+            <option value="tutor">Tutor / Pengajar</option>
+          </select>
+
+          <label>Nama lengkap</label>
+          <input type="text" id="regName" placeholder="Nama Anda" />
+          <label>Email</label>
+          <input type="email" id="regEmail" placeholder="email@contoh.com" />
+          <label>Nomor HP</label>
+          <input type="text" id="regPhone" placeholder="+62" />
+
+          <label>Password</label>
+          <input type="password" id="regPass" placeholder="Minimal 8 karakter" />
+          <div class="help">Kami akan mengirim OTP / verifikasi email untuk keamanan.</div>
+
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <button class="btn primary" onclick="register()">Daftar</button>
+            <button class="btn secondary" onclick="navigate('/login')">Sudah punya akun?</button>
+          </div>
+        </div>
+
+        <div style="width:360px">
+          <div class="card" style="background:linear-gradient(90deg, rgba(0,212,255,0.04), rgba(124,58,237,0.04))">
+            <h4>Kenapa Jadi Tutor di Alynspire?</h4>
+            <ul style="padding-left:18px;color:var(--muted)">
+              <li>Atur jadwal sendiri</li>
+              <li>Fitur reporting & pendapatan jelas</li>
+              <li>Dukungan kelas virtual & papan tulis digital</li>
+              <li>Pembayaran aman via payment gateway</li>
+            </ul>
+            <div style="margin-top:10px">
+              <label>Upload CV / Portofolio</label>
+              <input type="file" disabled />
+              <div class="small help">(+ nanti terhubung ke admin for verification)</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="section-login" class="hidden fade-in">
+    <div class="auth-hero">
+      <div class="auth-left">
+    <h1>
+      Selamat Datang<br>Kembali di <span>Alynspire</span>
+    </h1>
+    <p>Masuk untuk melanjutkan perjalanan belajarmu.</p>
+    <div class="card" style="position: relative; z-index: 10;">
+      <label>Email atau Nomor HP</label>
+      <input type="text" id="loginId" placeholder="email atau nomor HP" style="position: relative; z-index: 10;" />
+      <label>Password</label>
+      <input type="password" id="loginPass" placeholder="Password" style="position: relative; z-index: 10;"/>
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <button class="btn primary" onclick="login()" style="position: relative; z-index: 10;">Masuk</button>
+        <button class="btn secondary" onclick="socialLogin()" style="position: relative; z-index: 10;">Masuk dengan Google</button>
+      </div>
+      <div class="help" style="margin-top:10px">Jika lupa password, klik <a class="router" onclick="alert('Fitur reset password (mock)')">di sini</a>.</div>
+    </div>
+  </section>
+
+  <!-- Dashboard -->
+  <section id="section-dashboard" class="hidden fade-in">
+    <div class="dashboard-hero">
+  <div>
+    <h2 id="dashGreeting">👋 Halo, Pengguna!</h2>
+    <p class="muted">Siap melanjutkan perjalanan belajarmu hari ini?</p>
+  </div>
+  <button class="btn primary glow" onclick="navigate('/booking')">
+    🚀 Booking Kelas
+  </button>
+</div>
+    <h2 class="section-title">Dashboard</h2>
+    <div class="grid-2">
+      <div>
+        <div class="card glow">
+          <h3 id="dashGreeting">Halo, Pengguna!</h3>
+          <div class="dash-grid" style="margin-top:12px">
+            <div class="stat">
+              <div class="small">Saldo</div>
+              <div style="font-weight:800;font-size:18px" id="dashBalance">Rp 0</div>
+            </div>
+            <div class="stat">
+              <div class="small">Jadwal Minggu Ini</div>
+              <div style="font-weight:800" id="dashSessions">0 Sesi</div>
+            </div>
+            <div class="stat">
+              <div class="small">Rating Rata-rata</div>
+              <div style="font-weight:800" id="dashRating">-</div>
+            </div>
+            <div class="stat">
+              <div class="small">Pemberitahuan</div>
+              <div style="font-weight:800" id="dashNotif">0</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <h4 class="small">Aktivitas Terbaru</h4>
+            <div id="activityList" class="small muted" style="margin-top:8px">Tidak ada aktivitas.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <aside>
+        <div class="card">
+          <h4>Kontrol Cepat</h4>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
+            <button class="btn primary" onclick="navigate('/booking')" style="position: relative; z-index: 10;">Booking Kelas</button>
+            <button class="btn secondary" onclick="navigate('/tutors')" style="position: relative; z-index: 10;">Cari Tutor</button>
+            <button class="btn secondary" onclick="navigate('/blog')" style="position: relative; z-index: 10;">Baca Blog</button>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <h4>Pesan / Chat</h4>
+          <div id="miniChat" style="position: relative; z-index: 10;">
+            <div class="small muted">Chat offline (demo):</div>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <input id="chatInput" placeholder="Kirim pesan ke tutor (demo)" style="flex:1;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent" />
+              <button class="btn primary" onclick="sendChat()">Kirim</button>
+            </div>
+            <div id="chatLog" style="margin-top:8px;font-size:13px;color:var(--muted)"></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section id="section-blog" class="hidden fade-in blog-section">
+  <div class="blog-hero">
+    <div class="featured-blog">
+  <div class="featured-content">
+    <span class="badge">🔥 Artikel Pilihan</span>
+    <h2>Cara Belajar Efektif di Era Digital</h2>
+    <p>
+      Strategi belajar modern yang terbukti meningkatkan fokus dan hasil belajar.
+    </p>
+    <button class="btn-glow router">Baca Sekarang</button>
+  </div>
+</div>
+    <h1>Insight & Inspirasi Belajar</h1>
+    <p>
+      Artikel pilihan seputar belajar efektif, motivasi, dan tips sukses akademik.
+    </p>
+  </div>
+
+  <div class="blog-grid">
+
+    <article class="blog-card">
+      <div class="blog-thumb gradient-1"></div>
+      <div class="blog-content">
+        <div class="blog-meta">📅 12 Nov 2025 • Tim Alynspire</div>
+        <h3>5 Tips Belajar Efektif di Rumah</h3>
+        <p>
+          Atur jadwal, gunakan teknik Pomodoro, dan maksimalkan fokus saat belajar online.
+        </p>
+        <button class="btn secondary" onclick="alert('Buka artikel (mock)')">
+          Baca Selengkapnya →
+        </button>
+      </div>
+    </article>
+
+    <article class="blog-card">
+      <div class="blog-thumb gradient-2"></div>
+      <div class="blog-content">
+        <div class="blog-meta">📅 2 Nov 2025 • Tim Alynspire</div>
+        <h3>Mengatasi Rasa Malas Saat Ulangan</h3>
+        <p>
+          Strategi motivasi, goal setting, dan cara membangun konsistensi belajar.
+        </p>
+        <button class="btn secondary" onclick="alert('Buka artikel (mock)')">
+          Baca Selengkapnya →
+        </button>
+      </div>
+    </article>
+
+    <article class="blog-card">
+      <div class="blog-thumb gradient-3"></div>
+      <div class="blog-content">
+        <div class="blog-meta">📅 28 Okt 2025 • Tim Alynspire</div>
+        <h3>Kenapa Tutor Online Lebih Efektif?</h3>
+        <p>
+          Fleksibel, personal, dan terarah — inilah alasan les privat online makin diminati.
+        </p>
+        <button class="btn secondary" onclick="alert('Buka artikel (mock)')">
+          Baca Selengkapnya →
+        </button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+  <!-- About / Security -->
+  <section id="section-about" class="hidden fade-in about-section page-bg">
+
+  <!-- HERO TENTANG -->
+  <div class="about-hero">
+    <h1>Tentang <span>Alynspire</span></h1>
+    <p>
+      Platform pembelajaran online yang menghubungkan siswa dengan tutor terbaik
+      secara fleksibel, modern, dan terpercaya.
+    </p>
+  </div>
+
+  <!-- KONTEN -->
+  <div class="about-grid">
+
+    <!-- CERITA -->
+    <div class="about-story">
+      <h2>Misi Kami</h2>
+      <p>
+        Alynspire hadir untuk membantu setiap orang mendapatkan akses belajar
+        yang berkualitas tanpa batasan tempat dan waktu.
+      </p>
+      <p>
+        Kami percaya bahwa setiap siswa memiliki potensi luar biasa jika
+        dibimbing oleh tutor yang tepat.
+      </p>
+    </div>
+
+    <!-- NILAI -->
+    <div class="about-values">
+      <div class="value-card">
+        🎓
+        <h3>Tutor Terverifikasi</h3>
+        <p>Setiap tutor melalui proses seleksi dan validasi kualitas.</p>
+      </div>
+      <div class="value-card">
+        ⚡
+        <h3>Fleksibel</h3>
+        <p>Belajar kapan saja, di mana saja, sesuai kebutuhanmu.</p>
+      </div>
+      <div class="value-card">
+        🔒
+        <h3>Aman & Terpercaya</h3>
+        <p>Sistem transparan dan keamanan data terjamin.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- STATISTIK -->
+  <div class="about-stats">
+    <div>
+      <h3>500+</h3>
+      <span>Siswa Aktif</span>
+    </div>
+    <div>
+      <h3>100+</h3>
+      <span>Tutor Profesional</span>
+    </div>
+    <div>
+      <h3>4.8 ★</h3>
+      <span>Rating Pengguna</span>
+    </div>
+  </div>
+<div class="about-team">
+  <h2>Tim di Balik Alynspire</h2>
+
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="avatar glow">AV</div>
+      <h4>Alin Valerina</h4>
+      <span>Founder & Product Lead</span>
+    </div>
+
+    <div class="team-card">
+      <div class="avatar glow">RS</div>
+      <h4>Rasya</h4>
+      <span>Tech Engineer</span>
+    </div>
+
+    <div class="team-card">
+      <div class="avatar glow">NA</div>
+      <h4>Nadia</h4>
+      <span>Education Manager</span>
+    </div>
+  </div>
+</div>
+</section>
+
+  <section class="fade-in" style="text-align:center;margin-top:80px">
+  <h2 style="font-size:32px">
+    Belajar Lebih Mudah, Cepat, dan Terarah
+  </h2>
+  <p class="hero-subtitle" style="margin:auto;margin-top:12px">
+    Ribuan siswa telah menemukan tutor terbaiknya di Alynspire.
+    Sekarang giliran kamu.
+  </p>
+  <div style="margin-top:24px">
+    <button class="btn-glow" onclick="navigate('/register')">Mulai Sekarang</button>
+  </div>
+</section>
+  <footer>
+    © <span id="year"></span> Alynspire • Made with ❤ • <span class="muted">Privacy-first · Secure · Reliable</span>
+  </footer>
+</main>
+
+<!-- toast -->
+<div id="toast" class="toast hidden"></div>
+
+<script>
+  // ---------- Mock data ----------
+  const tutors = [
+  {
+    id:1,
+    name:"Raka Wijaya",
+    subject:"Matematika",
+    exp:6,
+    rating:4.9,
+    price:120000,
+    photo:"https://randomuser.me/api/portraits/men/32.jpg",
+    bio:"Tutor Matematika SMA & Olimpiade. Sabar & terstruktur."
+  },
+  {
+    id:2,
+    name:"Maya Santika",
+    subject:"Bahasa Inggris",
+    exp:4,
+    rating:4.8,
+    price:90000,
+    photo:"https://randomuser.me/api/portraits/women/44.jpg",
+    bio:"Fokus conversation & IELTS preparation."
+  },
+  {
+    id:3,
+    name:"Dedi Haryanto",
+    subject:"Fisika",
+    exp:8,
+    rating:4.95,
+    price:150000,
+    photo:"https://randomuser.me/api/portraits/men/45.jpg",
+    bio:"Menguatkan konsep dan latihan soal UTBK."
+  },
+  {
+    id:4,
+    name:"Lina Trisna",
+    subject:"Biologi",
+    exp:3,
+    rating:4.6,
+    price:80000,
+    photo:"https://randomuser.me/api/portraits/women/55.jpg",
+    bio:"Belajar biologi jadi lebih mudah & menyenangkan."
+  }
+  ,
+  {
+    id:5,
+    name:"Aulia Putri",
+    subject:"Kimia",
+    exp:5,
+    rating:4.7,
+    price:100000,
+    photo:"https://randomuser.me/api/portraits/women/63.jpg",
+    bio:"Kimia praktis & gampang dipahami."
+  },
+  {
+    id:6,
+    name:"Fajar Nugroho",
+    subject:"Matematika",
+    exp:7,
+    rating:4.85,
+    price:130000,
+    photo:"https://randomuser.me/api/portraits/men/60.jpg",
+    bio:"Spesialis UTBK & SBMPTN."
+  },
+  {
+    id:7,
+    name:"Nadia Rahma",
+    subject:"Bahasa Inggris",
+    exp:6,
+    rating:4.9,
+    price:110000,
+    photo:"https://randomuser.me/api/portraits/women/68.jpg",
+    bio:"IELTS & TOEFL mentor."
+  },
+  {
+    id:8,
+    name:"Rizky Pratama",
+    subject:"Fisika",
+    exp:5,
+    rating:4.7,
+    price:120000,
+    photo:"https://randomuser.me/api/portraits/men/71.jpg",
+    bio:"Fisika SMA & konsep dasar teknik."
+  },
+  {
+    id:9,
+    name:"Salsa Maharani",
+    subject:"Biologi",
+    exp:4,
+    rating:4.65,
+    price:85000,
+    photo:"https://randomuser.me/api/portraits/women/75.jpg",
+    bio:"Pendekatan visual & rangkuman mudah."
+  },
+  {
+    id:10,
+    name:"Ilham Fauzi",
+    subject:"Kimia",
+    exp:6,
+    rating:4.8,
+    price:115000,
+    photo:"https://randomuser.me/api/portraits/men/80.jpg",
+    bio:"Kimia organik & anorganik."
+  },
+  {
+    id:11,
+    name:"Putri Ayu",
+    subject:"Matematika",
+    exp:3,
+    rating:4.6,
+    price:75000,
+    photo:"https://randomuser.me/api/portraits/women/81.jpg",
+    bio:"Ramah untuk SMP & SMA."
+  },
+  {
+    id:12,
+    name:"Bayu Kurnia",
+    subject:"Fisika",
+    exp:9,
+    rating:4.95,
+    price:160000,
+    photo:"https://randomuser.me/api/portraits/men/90.jpg",
+    bio:"Pendalaman konsep & olimpiade."
+  },
+  {
+    id:13,
+    name:"Nina Oktaviani",
+    subject:"Bahasa Inggris",
+    exp:5,
+    rating:4.75,
+    price:100000,
+    photo:"https://randomuser.me/api/portraits/women/91.jpg",
+    bio:"Grammar & speaking confidence."
+  },
+  {
+    id:14,
+    name:"Andi Saputra",
+    subject:"Kimia",
+    exp:7,
+    rating:4.85,
+    price:125000,
+    photo:"https://randomuser.me/api/portraits/men/95.jpg",
+    bio:"Latihan soal intensif UTBK."
+  },
+  {
+    id:15,
+    name:"Rani Kusuma",
+    subject:"Biologi",
+    exp:6,
+    rating:4.8,
+    price:105000,
+    photo:"https://randomuser.me/api/portraits/women/98.jpg",
+    bio:"Biologi jadi ringkas & logis."
+  }
+];
+
+  // ---------- FUNGSI AI MATCHING (TARUH DI SINI) ----------
+  function aiMatchTutor(preferences){
+      let scoredTutors = tutors.map(t => {
+          let score = 0;
+          if(t.subject === preferences.subject) score += 50; 
+          if(t.price <= preferences.maxPrice) score += 20;   
+          score += t.rating * 10;                            
+          score += 10; 
+          return {...t, matchScore: score};
+      });
+      scoredTutors.sort((a,b)=>b.matchScore - a.matchScore);
+      return scoredTutors.slice(0,5); 
+  }
+
+  function showAiRecommendations(){
+      const sub = document.getElementById('filterSubject').value;
+      if(!sub) return showToast("Silakan pilih Mata Pelajaran terlebih dahulu!");
+
+      const preferences = {
+          subject: sub,
+          maxPrice: 150000,
+          availableHours: ['09:00','11:00']
+      };
+      const recommended = aiMatchTutor(preferences);
+      
+      const list = document.getElementById('tutorsList');
+      list.innerHTML = `<div style="grid-column:1/-1; margin-bottom:10px; color:var(--accent-1); font-weight:bold">
+                          ✨ Hasil Analisis AI untuk ${sub}
+                        </div>`;
+      
+      recommended.forEach(t => {
+          const el = document.createElement('div'); 
+          el.className='tutor-card ai-glow'; // Pakai class ai-glow agar bercahaya
+          el.innerHTML = `
+              <div style="display:flex;justify-content:space-between;align-items:center; overflow: hidden">
+                  <div style="display:flex;gap:12px;align-items:center">
+                      <img class="avatar" src="${t.photo}" alt="${t.name}">
+                      <div>
+                          <div style="font-weight:800">${t.name}</div>
+                          <div class="small muted">${t.subject} • ${t.exp} tahun</div>
+                          <div class="pill" style="font-size:10px; margin-top:4px; background:rgba(0,212,255,0.1)">AI Match: ${Math.round(t.matchScore)}%</div>
+                      </div>
+                  </div>
+                  <div style="text-align:right">
+                      <div style="font-weight:800">${t.rating} ★</div>
+                      <div class="small muted">Rp${numberFormat(t.price)}/sesi</div>
+                      <div style="margin-top:8px">
+                          <button class="btn primary" onclick="selectTutor(event, ${t.id})">Pilih</button>
+                      </div>
+                  </div>
+              </div>
+          `;
+          list.appendChild(el);
+      });
+      showToast("AI telah mencocokkan tutor terbaik untuk Anda!");
+  }
+  function smartLearningAnalysis(){
+    const transactions = JSON.parse(localStorage.getItem('transactions')||'[]');
+    if(transactions.length === 0) return showToast('Belum ada aktivitas belajar.');
+
+    const summary = {};
+    transactions.forEach(tx=>{
+        if(!summary[tx.tutorId]) summary[tx.tutorId] = {count:0, totalRating:0};
+        summary[tx.tutorId].count += 1;
+        // mock: rating diambil dari data tutor
+        const t = tutors.find(tt => tt.id===tx.tutorId);
+        summary[tx.tutorId].totalRating += t.rating;
+    });
+
+    let analysisHtml = '<h4>Smart Learning Analysis</h4>';
+    for(let tutorId in summary){
+        const t = tutors.find(tt=>tt.id==tutorId);
+        const data = summary[tutorId];
+        analysisHtml += `<div class="small muted">${t.name} (${t.subject}): ${data.count} sesi, rata-rata rating tutor ${ (data.totalRating/data.count).toFixed(2) } ★</div>`;
+    }
+
+    const el = document.getElementById('activityList');
+    el.innerHTML = analysisHtml;
+}
+
+  // ---------- Routing (single page behavior) ----------
+  const routes = {
+    '/': showHome,
+    '/tutors': showTutors,
+    '/booking': showBooking,
+    '/register': showRegister,
+    '/login': showLogin,
+    '/dashboard': showDashboard,
+    '/blog': showBlog,
+    '/about': showAbout
+  };
+
+  // initial render
+  document.getElementById('year').innerText = new Date().getFullYear();
+  renderTutorsPreview();
+  renderTutors();
+  // set default route based on path
+  navigate(window.location.pathname || '/');
+
+  // navigation
+  function navigate(path){
+    if(!routes[path]) path = '/';
+    history.pushState({path}, '', path);
+    Object.values(document.querySelectorAll('section')).forEach(s => s.classList.add('hidden'));
+    routes[path]();
+  }
+  window.onpopstate = (e) => {
+    const p = (e.state && e.state.path) ? e.state.path : '/';
+    Object.values(document.querySelectorAll('section')).forEach(s => s.classList.add('hidden'));
+    (routes[p] || showHome)();
+  };
+
+  // ---------- Views ----------
+  function showHome(){
+    document.getElementById('section-home').classList.remove('hidden');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function showTutors(){ 
+    document.getElementById('section-tutors').classList.remove('hidden'); 
+    renderTutors(); 
+    window.scrollTo({top:0,behavior:'smooth'}); 
+  }
+  function showBooking(){ document.getElementById('section-booking').classList.remove('hidden'); window.scrollTo({top:0,behavior:'smooth'}); }
+  function showRegister(){ document.getElementById('section-register').classList.remove('hidden'); window.scrollTo({top:0,behavior:'smooth'}); }
+  function showLogin(){ document.getElementById('section-login').classList.remove('hidden'); window.scrollTo({top:0,behavior:'smooth'}); }
+  function showDashboard(){ document.getElementById('section-dashboard').classList.remove('hidden'); window.scrollTo({top:0,behavior:'smooth'});
+smartLearningAnalysis(); }
+  function showBlog(){ document.getElementById('section-blog').classList.remove('hidden'); window.scrollTo({top:0,behavior:'smooth'}); }
+  function showAbout(){ document.getElementById('section-about').classList.remove('hidden'); window.scrollTo({top:0,behavior:'smooth'}); }
+
+  // ---------- Tutors render ----------
+  function renderTutorsPreview(){
+    const root = document.getElementById('tutorsPreview');
+    root.innerHTML = '';
+    tutors.slice(0,4).forEach(t=>{
+      const el = document.createElement('div'); el.className='tutor-card';
+      
+      // Tampilan Card Tutor di Beranda agar simetris
+      el.innerHTML = `
+        <div style="display:flex;flex-direction:column;justify-content:space-between;height:100%;">
+          <div style="display:flex;gap:12px;align-items:center;">
+            <img class="avatar" src="${t.photo}" alt="${t.name}">
+            <div>
+              <div style="font-weight:800">${t.name}</div>
+              <div class="small muted">${t.subject} • ${t.exp} tahun</div>
+            </div>
+          </div>
+          <div style="margin-top:10px;">
+            <span class="tag">${t.rating} ★</span> 
+            <span style="color:var(--muted);font-weight:700;">Rp ${numberFormat(t.price)}/sesi</span>
+          </div>
+        </div>
+      `;
+      // Event klik card di Beranda
+      el.onclick = ()=> { selectTutor(null, t.id); navigate('/booking'); }; 
+      root.appendChild(el);
+    });
+  }
+
+  function renderTutors(){
+    const list = document.getElementById('tutorsList');
+    const subject = document.getElementById('filterSubject').value;
+    const nameq = document.getElementById('filterName').value.toLowerCase();
+    list.innerHTML = '';
+    let filtered = tutors.filter(t => (subject===''||t.subject===subject) && t.name.toLowerCase().includes(nameq));
+    filtered.forEach(t=>{
+      const el = document.createElement('div'); el.className='tutor-card';
+      
+      el.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center; overflow: hidden">
+          <div style="display:flex;gap:12px;align-items:center">
+            <img
+             class="avatar"
+             src="${t.photo}"
+             alt="${t.name}"
+          >
+            <div>
+              <div style="font-weight:800">${t.name}</div>
+              <div class="small muted">${t.subject} • ${t.exp} tahun pengalaman</div>
+              <div style="margin-top:8px;color:var(--muted)">${t.bio}</div>
+            </div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-weight:800">${t.rating} ★</div>
+            <div class="small muted">Rp${numberFormat(t.price)}/sesi</div>
+            <div style="margin-top:8px">
+              <button class="btn primary" onclick="selectTutor(event, ${t.id})">Pilih</button>
+              <button class="btn secondary" onclick="openProfile(event, ${t.id})">Lihat</button>
+            </div>
+          </div>
+        </div>
+      `;
+      list.appendChild(el);
+    });
+
+    if(filtered.length===0){
+      list.innerHTML = '<div class="small muted">Tidak ada tutor yang sesuai filter.</div>';
+    }
+  }
+
+  function sortTutors(by){
+    if(by==='rating') tutors.sort((a,b)=>b.rating-a.rating);
+    if(by==='experience') tutors.sort((a,b)=>b.exp-a.exp);
+    renderTutors();
+    showToast('Terurut berdasarkan ' + by);
+  }
+
+  // ---------- select tutor & booking ----------
+  let selectedTutor = null;
+  
+  // Menerima event (e) untuk stopPropagation dari tombol Pilih
+  function selectTutor(e, id){
+    // Hentikan event klik agar tidak memicu event klik pada card induk (Halaman Tutor)
+    if (e) {
+        e.stopPropagation(); 
+    }
+    
+    selectedTutor = tutors.find(t=>t.id===id);
+    const box = document.getElementById('selectedTutorCard');
+    box.innerHTML = `<div style="display:flex;gap:12px;align-items:center">
+      <img
+        class="avatar"
+        src="${selectedTutor.photo}"
+        alt="${selectedTutor.name}"
+      >
+      <div><div style="font-weight:800">${selectedTutor.name}</div><div class="small muted">${selectedTutor.subject} • Rp ${numberFormat(selectedTutor.price)}</div></div>
+    </div>`;
+    
+    // Render slot waktu
+    const slots = document.getElementById('slots');
+    slots.innerHTML = '';
+    const hours = ['09:00','11:00','13:00','15:00','18:00'];
+    
+    hours.forEach(h=>{
+      const s = document.createElement('div'); s.className='slot';
+      
+      // Menggunakan document.createElement dan addEventListener agar lebih stabil
+      const timeInfo = document.createElement('div');
+      timeInfo.innerHTML = `<div><div class="time">${h}</div><div class="small muted">60 menit</div></div>`;
+      
+      const buttonContainer = document.createElement('div');
+      const bookBtn = document.createElement('button');
+      bookBtn.innerText = 'Booking';
+      bookBtn.className = 'btn primary'; 
+      bookBtn.style.position = 'relative'; 
+      bookBtn.style.zIndex = '10'; 
+      
+      // Menggunakan addEventListener
+      bookBtn.addEventListener('click', () => bookSlot(h));
+      
+      buttonContainer.appendChild(bookBtn);
+      
+      s.appendChild(timeInfo);
+      s.appendChild(buttonContainer);
+      slots.appendChild(s);
+    });
+    
+    // summary
+    document.getElementById('summaryBox').innerHTML = '<b>' + selectedTutor.name + '</b><div class="small muted">' + selectedTutor.subject + ' — Rp ' + numberFormat(selectedTutor.price) + '</div>';
+    showToast('Tutor dipilih: ' + selectedTutor.name);
+    navigate('/booking');
+  }
+
+  function bookSlot(time){
+    if(!selectedTutor) return showToast('Pilih tutor dulu!');
+    const date = document.getElementById('bookingDate').value || new Date().toISOString().slice(0,10);
+    document.getElementById('summaryBox').innerHTML = `
+      <b>${selectedTutor.name}</b>
+      <div class="small muted">${selectedTutor.subject}</div>
+      <div style="margin-top:8px">Tanggal: <strong>${date}</strong><br/>Waktu: <strong>${time}</strong></div>
+      <div style="margin-top:6px">Total: <strong>Rp ${numberFormat(selectedTutor.price)}</strong></div>
+    `;
+    // store pending booking in localStorage (mock)
+    localStorage.setItem('pendingBooking', JSON.stringify({ tutorId:selectedTutor.id, date, time, amount:selectedTutor.price }));
+    
+    // Perbaikan: Pesan toast yang lebih jelas agar yakin slot sudah terpilih
+    showToast('Slot dipilih: ' + selectedTutor.name + ' pada jam ' + time + '. Siap bayar.');
+    
+    // Panggil fungsi untuk memastikan tombol bayar terlihat atau terupdate jika Anda memiliki fungsi refresh UI di sini
+    // (Jika Anda punya ID untuk tombol Bayar & Konfirmasi, ini tempat yang bagus untuk mengaktifkannya)
+    // Contoh mock:
+    document.querySelector('.checkout-btn').classList.add('active'); // asumsi Anda memiliki class checkout-btn di tombol Bayar
+  }
+
+  // ---------- checkout (mock payment flow) ----------
+  function checkout(){
+    const pending = JSON.parse(localStorage.getItem('pendingBooking')||'null');
+    
+    // Validasi apakah slot sudah dipilih
+    if(!pending) return showToast('Pilih slot terlebih dahulu sebelum checkout.');
+    
+    // In real app: call backend -> create payment intent via Midtrans/Xendit -> redirect or show payment widget
+    showToast('Memproses pembayaran (mock) ...');
+    setTimeout(()=>{
+      // success mock
+      const id = 'TRX'+Date.now();
+      // store transaction history (mock)
+      const hist = JSON.parse(localStorage.getItem('transactions')||'[]');
+      hist.push({ id, tutorId:pending.tutorId, date:pending.date, time:pending.time, amount:pending.amount, status:'success' });
+      localStorage.setItem('transactions', JSON.stringify(hist));
+      localStorage.removeItem('pendingBooking');
+      showToast('Pembayaran berhasil! Notifikasi dikirim ke email & tutor.');
+      // update dashboard quick mock
+      document.getElementById('dashSessions').innerText = (parseInt(document.getElementById('dashSessions').innerText) || 0) + 1 + ' Sesi';
+      navigate('/dashboard');
+    },1200);
+  }
+
+  // ---------- register/login (mock) ----------
+  function register(){
+    const name = document.getElementById('regName').value.trim();
+    const email = document.getElementById('regEmail').value.trim();
+    const pass = document.getElementById('regPass').value;
+    if(!name||!email||!pass) return showToast('Lengkapi data pendaftaran.');
+    // mock store user
+    const users = JSON.parse(localStorage.getItem('users')||'[]');
+    users.push({ id:Date.now(), name, email, pass, role:document.getElementById('role').value });
+    localStorage.setItem('users', JSON.stringify(users));
+    showToast('Pendaftaran berhasil. Silakan masuk.');
+    navigate('/login');
+  }
+
+  function login(){
+    const id = document.getElementById('loginId').value.trim();
+    const pass = document.getElementById('loginPass').value;
+    
+    // Validasi input harus lengkap
+    if (!id || !pass) {
+        return showToast('Masukkan Email/Nomor HP dan Password.');
+    }
+    
+    const users = JSON.parse(localStorage.getItem('users')||'[]');
+    // Cek user yang memiliki email/id/phone DAN password yang cocok
+    const u = users.find(x => (x.email===id||x.id==id||x.phone===id) && x.pass===pass);
+    
+    if(!u) return showToast('Akun tidak ditemukan atau password salah (mock).');
+    
+    localStorage.setItem('auth', JSON.stringify({ id:u.id, name:u.name, role:u.role }));
+    showToast('Masuk berhasil! Selamat datang, ' + u.name);
+    // update dashboard greeting
+    document.getElementById('dashGreeting').innerText = 'Halo, ' + u.name + '!';
+    navigate('/dashboard');
+  }
+
+  function socialLogin(){
+    showToast('Redirect ke Google Sign-In (mock)');
+    setTimeout(()=>{ showToast('Login google berhasil (mock)'); navigate('/dashboard'); },900);
+  }
+
+  // quickJoin OTP mock
+  function quickJoin(){
+    const e = document.getElementById('quickEmail').value.trim();
+    if(!e) return showToast('Isi email atau nomor HP dulu.');
+    showToast('OTP terkirim (mock). Masukkan di login.');
+  }
+
+  // ---------- chat mock ----------
+  function sendChat(){
+    const text = document.getElementById('chatInput').value.trim();
+    if(!text) return showToast('Tulis pesan dulu.');
+    const log = document.getElementById('chatLog');
+    const p = document.createElement('div'); p.style.marginTop='6px'; p.style.padding='8px'; p.style.borderRadius='8px'; p.style.background='rgba(255,255,255,0.02)';
+    p.innerHTML = '<b>Anda:</b> ' + escapeHtml(text) + ' <div class="small muted" style="margin-top:6px">terkirim • just now</div>';
+    log.prepend(p);
+    document.getElementById('chatInput').value='';
+    // auto reply (mock)
+    setTimeout(()=>{ 
+        const r = document.createElement('div'); 
+        r.style.marginTop='6px'; 
+        r.style.padding='8px'; 
+        r.style.borderRadius='8px'; 
+        r.style.background='rgba(0,212,255,0.04)'; 
+        r.innerHTML = '<b>Tutor (auto):</b> Terima kasih! Kami akan merespon segera.'; 
+        log.prepend(r); 
+    },700);
+  }
+
+  // ---------- helper & UI ----------
+  // Menerima event (e) untuk stopPropagation dari tombol Lihat (Halaman Tutor)
+  function openProfile(e, id){
+    if (e) {
+        e.stopPropagation();
+    }
+    const t = tutors.find(x=>x.id===id);
+    alert(t.name +
+    '\n\n' + 'Mata Pelajaran: ' + t.subject +
+    '\n' + 'Pengalaman: ' + t.exp + ' tahun ' +
+    '\n' + 'Rating: ' + t.rating +
+    '\n\n' + 'Bio:' +
+    '\n' + t.bio +
+    '\n\n' + '(Fitur profile full: portfolio, ulasan, media teaching)');
+  }
+
+  function numberFormat(n){ return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."); }
+  function showToast(msg, time=2400){
+    const el = document.getElementById('toast');
+    el.innerText = msg; el.classList.remove('hidden');
+    clearTimeout(el._t);
+    el._t = setTimeout(()=>el.classList.add('hidden'), time);
+  }
+
+  // escape HTML to avoid injection in small mocks
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); }
+
+  function quickSelectFirstTutor(){
+    selectTutor(null, tutors[0].id);
+  }
+
+  // initial small states
+  if(!localStorage.getItem('users')){
+    // create demo user: email: alin@demo.com, pass: demo1234
+    localStorage.setItem('users', JSON.stringify([{id:1001,name:'Alin Demo',email:'alin@demo.com',pass:'demo1234',role:'student'}]));
+  }
+  
+  // Fungsi untuk inisialisasi/menampilkan tombol Bayar saat booking
+  function initBookingView() {
+    // Ini adalah tempat untuk menambahkan event listener ke tombol "Bayar & Konfirmasi"
+    // Asumsi: Tombol tersebut memiliki ID 'checkoutButton' di HTML
+    const checkoutBtn = document.getElementById('checkoutButton');
+    if (checkoutBtn) {
+        // Hapus event listener lama jika ada
+        checkoutBtn.removeEventListener('click', checkout);
+        // Tambahkan event listener baru
+        checkoutBtn.addEventListener('click', checkout);
+    }
+  }
+
+  // Panggil initBookingView saat halaman Booking dimuat (opsional, jika Anda punya ID)
+  // showBooking function will be called on navigation, so we can put it there:
+  const originalShowBooking = routes['/booking'];
+  routes['/booking'] = function() {
+      originalShowBooking();
+      initBookingView();
+  };
+
+
+  // showHome by default if route not set
+  function showHomeIfNeeded(){
+    const path = window.location.pathname;
+    if(!routes[path]) navigate('/');
+  }
+  showHomeIfNeeded();
+
+  // simple helper for testing
+  function openDev(){
+    localStorage.clear(); showToast('LocalStorage cleared (dev)');
+  }
+
+  // simulate a small notification on load
+  setTimeout(()=>showToast('Selamat datang di Alynspire!'), 800);
+  // Tambahkan fungsi ini di bagian JavaScript Anda
+
+function updatePaymentDetails() {
+    const method = document.getElementById('payMethod').value;
+    let msg = '';
+    
+    // Anda juga perlu elemen di HTML untuk menampilkan detail ini (misal: div id="paymentInfo")
+    // Karena kita tidak punya elemen itu, kita pakai Toast saja untuk demo.
+    
+    if (method === 'ewallet') {
+        msg = 'Metode E-wallet dipilih. Anda akan dialihkan ke halaman Gopay/OVO/Dana saat Checkout.';
+    } else if (method === 'transfer') {
+        msg = 'Metode Transfer Bank (otomatis) dipilih. Instruksi Virtual Account akan muncul setelah Checkout.';
+    } else if (method === 'invoice') {
+        msg = 'Metode Invoice/Transfer Manual dipilih. Detail rekening akan dikirim via email.';
+    } else {
+        msg = 'Pilih metode pembayaran yang valid.';
+    }
+    
+    // Ganti Toast ini jika Anda punya div khusus untuk menampilkan info pembayaran
+    showToast(msg, 4000); 
+}
+</script>
+
+</body>
+</html>
